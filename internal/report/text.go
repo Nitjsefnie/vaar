@@ -24,7 +24,7 @@ func Text(findings []lint.Finding) string {
 		if i > 0 {
 			builder.WriteByte('\n')
 		}
-		builder.WriteString(fmt.Sprintf("%s %s %s:%d %s", finding.Severity, finding.Rule, finding.File, finding.Line, finding.Message))
+		builder.WriteString(fmt.Sprintf("%s %s %s:%d %s", finding.Severity, finding.Rule, strings.ReplaceAll(finding.File, "\\", "/"), finding.Line, finding.Message))
 	}
 	builder.WriteByte('\n')
 	return builder.String()
